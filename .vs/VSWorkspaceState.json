@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Core",
+    "\\src\\Core\\Discord_clone.Application",
+    "\\src\\Core\\Discord_clone.Application\\DTOs",
+    "\\src\\Presentation",
+    "\\src\\Presentation\\Discord_clone.WebApi",
+    "\\src\\Presentation\\Discord_clone.WebApi\\Controllers"
+  ],
+  "SelectedNode": "\\src\\Presentation\\Discord_clone.WebApi\\Controllers\\ChannelController.cs",
+  "PreviewInSolutionExplorer": false
+}
