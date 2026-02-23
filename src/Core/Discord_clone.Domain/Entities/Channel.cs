@@ -10,10 +10,11 @@ namespace Discord_clone.Domain.Entities
     public class Channel:BaseEntity
     {
         public string Name { get; set; } = string.Empty;
-        public Guid ServerId { get; set; } 
 
-        // Type məsələsini hələlik sadə saxlayaq (məsələn: "Text" və ya "Voice")
-        public ChannelType ChannelType { get; set; } = ChannelType.Text;
-        public ChannelType Type { get; set; }
+        public ChannelType Type { get; set; } = ChannelType.Text;
+
+        public Guid ServerId { get; set; }
+
+        public Server? Server { get; set; }
     }
 }

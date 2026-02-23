@@ -48,6 +48,59 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Discord_clone.WebApi.Controllers.ChannelController",
+    "Method": "DeleteChannel",
+    "RelativePath": "api/Channel/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.ChannelController",
+    "Method": "GetServerChannels",
+    "RelativePath": "api/Channel/server/{serverId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serverId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.ChannelController",
+    "Method": "UpdateChannel",
+    "RelativePath": "api/Channel/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "Discord_clone.Application.DTOs.UpdateChannelDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
     "Method": "CreateServer",
     "RelativePath": "api/Server/create",
@@ -58,6 +111,53 @@
       {
         "Name": "model",
         "Type": "Discord_clone.Application.DTOs.CreateServerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
+    "Method": "DeleteServer",
+    "RelativePath": "api/Server/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
+    "Method": "GetMyServers",
+    "RelativePath": "api/Server/my-servers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
+    "Method": "UpdateServer",
+    "RelativePath": "api/Server/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "Discord_clone.Application.DTOs.UpdateServerDto",
         "IsRequired": true
       }
     ],

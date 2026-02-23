@@ -52,3 +52,4 @@ C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Core\Discord_clone.Do
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Core\Discord_clone.Domain\obj\Debug\net8.0\Discord_clone.Domain.pdb
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Core\Discord_clone.Domain\obj\Debug\net8.0\Discord_clone.Domain.genruntimeconfig.cache
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Core\Discord_clone.Domain\obj\Debug\net8.0\ref\Discord_clone.Domain.dll
+C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Core\Discord_clone.Domain\obj\Debug\net8.0\Discord_clone.Domain.sourcelink.json

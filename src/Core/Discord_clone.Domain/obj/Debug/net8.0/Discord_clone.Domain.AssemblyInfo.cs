@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Discord_clone.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84a0c2c5291e30bfd06e86ea842691023cd7f148")]
 [assembly: System.Reflection.AssemblyProductAttribute("Discord_clone.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Discord_clone.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

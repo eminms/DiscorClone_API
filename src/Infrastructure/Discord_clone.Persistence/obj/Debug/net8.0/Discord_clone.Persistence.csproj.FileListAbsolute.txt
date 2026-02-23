@@ -162,3 +162,4 @@ C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Infrastructure\Discor
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Infrastructure\Discord_clone.Persistence\obj\Debug\net8.0\Discord_clone.Persistence.pdb
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Infrastructure\Discord_clone.Persistence\obj\Debug\net8.0\Discord_clone.Persistence.genruntimeconfig.cache
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Infrastructure\Discord_clone.Persistence\obj\Debug\net8.0\ref\Discord_clone.Persistence.dll
+C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Infrastructure\Discord_clone.Persistence\obj\Debug\net8.0\Discord_clone.Persistence.sourcelink.json
