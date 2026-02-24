@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Discord_clone.Domain.Entities
+﻿namespace Discord_clone.Domain.Entities
 {
     public class ServerMember
     {
