@@ -4,6 +4,7 @@ using Discord_clone.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Discord_clone.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260224152040_AddedOneToManyRelations")]
+    partial class AddedOneToManyRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,24 +187,6 @@ namespace Discord_clone.Persistence.Migrations
                     b.ToTable("Servers");
                 });
 
-            modelBuilder.Entity("Discord_clone.Domain.Entities.ServerMember", b =>
-                {
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<Guid>("ServerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("JoinedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("AppUserId", "ServerId");
-
-                    b.HasIndex("ServerId");
-
-                    b.ToTable("ServerMembers");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -357,25 +342,6 @@ namespace Discord_clone.Persistence.Migrations
                     b.Navigation("Owner");
                 });
 
-            modelBuilder.Entity("Discord_clone.Domain.Entities.ServerMember", b =>
-                {
-                    b.HasOne("Discord_clone.Domain.Entities.AppUser", "AppUser")
-                        .WithMany("ServerMembers")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Discord_clone.Domain.Entities.Server", "Server")
-                        .WithMany("Members")
-                        .HasForeignKey("ServerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("Server");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -430,15 +396,11 @@ namespace Discord_clone.Persistence.Migrations
             modelBuilder.Entity("Discord_clone.Domain.Entities.AppUser", b =>
                 {
                     b.Navigation("OwnedServers");
-
-                    b.Navigation("ServerMembers");
                 });
 
             modelBuilder.Entity("Discord_clone.Domain.Entities.Server", b =>
                 {
                     b.Navigation("Channels");
-
-                    b.Navigation("Members");
                 });
 #pragma warning restore 612, 618
         }

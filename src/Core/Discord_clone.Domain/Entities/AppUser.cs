@@ -11,5 +11,7 @@ namespace Discord_clone.Domain.Entities
     {
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public string? ProfileImageUrl { get; set; }
+        public ICollection<Server> OwnedServers { get; set; } = new List<Server>();
+        public ICollection<ServerMember> ServerMembers { get; set; } = new List<ServerMember>();
     }
 }
