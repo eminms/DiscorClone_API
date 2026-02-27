@@ -13,5 +13,6 @@ namespace Discord_clone.Domain.Entities
         public string? ProfileImageUrl { get; set; }
         public ICollection<Server> OwnedServers { get; set; } = new List<Server>();
         public ICollection<ServerMember> ServerMembers { get; set; } = new List<ServerMember>();
+        public ICollection<Message> Messages { get; set; } = new List<Message>();
     }
 }

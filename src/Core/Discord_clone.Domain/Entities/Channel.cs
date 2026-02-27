@@ -10,5 +10,6 @@ namespace Discord_clone.Domain.Entities
         public Guid ServerId { get; set; }
 
         public Server? Server { get; set; }
+        public ICollection<Message> Messages { get; set; } = new List<Message>();
     }
 }

@@ -102,5 +102,54 @@ namespace Discord_clone.WebApi.Controllers
 
             return Ok(new { Message = "Server uğurla silindi!" });
         }
+
+        // 4. JOIN: Başqasının (və ya hər hansı) serverinə qoşulmaq
+        [HttpPost("join/{serverId}")]
+        public async Task<IActionResult> JoinServer(Guid serverId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return Unauthorized();
+
+            // Öncə baxaq belə bir server ümumiyyətlə varmı?
+            var server = await _context.Servers.FindAsync(serverId);
+            if (server == null) return NotFound(new { Message = "Belə bir server tapılmadı!" });
+
+            // Bəs bu adam onsuz da bu serverin üzvüdürmü? (Təkrar qoşulmasın)
+            var existingMember = await _context.ServerMembers
+                .FirstOrDefaultAsync(sm => sm.ServerId == serverId && sm.AppUserId == userId);
+
+            if (existingMember != null)
+                return BadRequest(new { Message = "Sən onsuz da bu serverin üzvüsən!" });
+
+            // Hər şey qaydasındadırsa, KÖRPÜNÜ qururuq!
+            var newMember = new ServerMember
+            {
+                AppUserId = userId,
+                ServerId = serverId,
+                JoinedAt = DateTime.UtcNow
+            };
+
+            _context.ServerMembers.Add(newMember);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = $"Təbriklər! '{server.Name}' serverinə qoşuldun." });
+        }
+
+        // 5. READ: Mənim ÜZV OLDUĞUM (qoşulduğum) bütün serverləri gətir
+        [HttpGet("joined-servers")]
+        public async Task<IActionResult> GetJoinedServers()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return Unauthorized();
+
+            // Körpü (ServerMembers) cədvəlinə girib, bu istifadəçinin qoşulduğu serverləri çəkirik
+            var joinedServers = await _context.ServerMembers
+                .Where(sm => sm.AppUserId == userId)
+                .Include(sm => sm.Server) // Cədvəldən sadəcə ID yox, Serverin öz məlumatlarını (Ad, Şəkil) da çəkirik
+                .Select(sm => sm.Server)  // Sonda sadəcə Server obyektlərini ekrana veririk
+                .ToListAsync();
+
+            return Ok(joinedServers);
+        }
     }
 }

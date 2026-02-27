@@ -134,6 +134,32 @@
   },
   {
     "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
+    "Method": "JoinServer",
+    "RelativePath": "api/Server/join/{serverId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serverId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
+    "Method": "GetJoinedServers",
+    "RelativePath": "api/Server/joined-servers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
     "Method": "GetMyServers",
     "RelativePath": "api/Server/my-servers",
     "HttpMethod": "GET",

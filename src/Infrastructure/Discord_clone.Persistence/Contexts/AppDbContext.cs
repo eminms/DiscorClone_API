@@ -19,24 +19,36 @@ public class AppDbContext : IdentityDbContext<AppUser>
     {
         base.OnModelCreating(builder);
 
-        // N:N ƏLAQƏSİNİN QURULMASI
+        // --- N:N ƏLAQƏSİNİN QURULMASI (ServerMembers) ---
 
-        // 1. Körpünün unikal açarı hər iki ID-nin birləşməsidir (Bir adam eyni serverə 2 dəfə qoşula bilməz)
         builder.Entity<ServerMember>()
             .HasKey(sm => new { sm.AppUserId, sm.ServerId });
 
-        // 2. İstifadəçi ilə Körpü arasındakı əlaqə
         builder.Entity<ServerMember>()
             .HasOne(sm => sm.AppUser)
             .WithMany(u => u.ServerMembers)
             .HasForeignKey(sm => sm.AppUserId)
-            .OnDelete(DeleteBehavior.NoAction); // XƏTA OLMAMASI ÜÇÜN NoAction edirik
+            .OnDelete(DeleteBehavior.NoAction);
 
-        // 3. Server ilə Körpü arasındakı əlaqə
         builder.Entity<ServerMember>()
             .HasOne(sm => sm.Server)
             .WithMany(s => s.Members)
             .HasForeignKey(sm => sm.ServerId)
-            .OnDelete(DeleteBehavior.Cascade); // Server silinəndə üzvlük də silinsin
+            .OnDelete(DeleteBehavior.Cascade);
+
+
+        // --- YENİ: MESAJ ƏLAQƏLƏRİNİN QURULMASI ---
+
+        builder.Entity<Message>()
+            .HasOne(m => m.Sender)
+            .WithMany(u => u.Messages)
+            .HasForeignKey(m => m.SenderId)
+            .OnDelete(DeleteBehavior.NoAction); // İstifadəçi silinəndə mesajlar silinməsin (xəta olmasın deyə)
+
+        builder.Entity<Message>()
+            .HasOne(m => m.Channel)
+            .WithMany(c => c.Messages)
+            .HasForeignKey(m => m.ChannelId)
+            .OnDelete(DeleteBehavior.Cascade); // Kanal silinəndə içindəki mesajlar da uçsun
     }
 }

@@ -9,11 +9,14 @@ namespace Discord_clone.Domain.Entities
     public class Message:BaseEntity
     {
         public string Content { get; set; } = string.Empty;
+        public DateTime SentAt { get; set; } = DateTime.UtcNow;
 
-        // Mesajı kim yazıb? (AppUser Id)
+        // 1. KİM göndərib? (AppUser ilə 1:N əlaqə)
         public string SenderId { get; set; } = string.Empty;
+        public AppUser? Sender { get; set; }
 
-        // Mesaj hansı kanala yazılıb?
+        // 2. HANSI kanala göndərilib? (Channel ilə 1:N əlaqə)
         public Guid ChannelId { get; set; }
+        public Channel? Channel { get; set; }
     }
 }
