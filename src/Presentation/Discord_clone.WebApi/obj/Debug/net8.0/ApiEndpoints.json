@@ -101,6 +101,75 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Discord_clone.WebApi.Controllers.MessageController",
+    "Method": "GetChannelMessages",
+    "RelativePath": "api/Message/{channelId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "channelId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.MessageController",
+    "Method": "DeleteMessage",
+    "RelativePath": "api/Message/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.MessageController",
+    "Method": "EditMessage",
+    "RelativePath": "api/Message/edit/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "Discord_clone.Application.DTOs.UpdateMessageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.MessageController",
+    "Method": "SendMessage",
+    "RelativePath": "api/Message/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Discord_clone.Application.DTOs.SendMessageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
     "Method": "CreateServer",
     "RelativePath": "api/Server/create",

@@ -14,7 +14,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<Channel> Channels { get; set; }
     public DbSet<Message> Messages { get; set; }
     public DbSet<ServerMember> ServerMembers { get; set; }
-
+    public DbSet<Friendship> Friendships { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -50,5 +50,31 @@ public class AppDbContext : IdentityDbContext<AppUser>
             .WithMany(c => c.Messages)
             .HasForeignKey(m => m.ChannelId)
             .OnDelete(DeleteBehavior.Cascade); // Kanal silinəndə içindəki mesajlar da uçsun
+
+        builder.Entity<Channel>()
+            .HasOne(c => c.Server)
+            .WithMany(s => s.Channels)
+            .HasForeignKey(c => c.ServerId)
+            .OnDelete(DeleteBehavior.Cascade); // Server silinəndə kanalları da silinsin
+
+        // --- DOSTLUQ (FRIENDSHIP) ƏLAQƏLƏRİ ---
+
+        // Unikal açar: İki adam arasında yalnız 1 qeyd ola bilər
+        builder.Entity<Friendship>()
+            .HasKey(f => new { f.RequesterId, f.ReceiverId });
+
+        // İstəyi göndərən tərəf
+        builder.Entity<Friendship>()
+            .HasOne(f => f.Requester)
+            .WithMany(u => u.SentFriendRequests)
+            .HasForeignKey(f => f.RequesterId)
+            .OnDelete(DeleteBehavior.Restrict); // DİQQƏT: Restrict yazırıq ki, SQL silinmə xətası verməsin
+
+        // İstəyi alan tərəf
+        builder.Entity<Friendship>()
+            .HasOne(f => f.Receiver)
+            .WithMany(u => u.ReceivedFriendRequests)
+            .HasForeignKey(f => f.ReceiverId)
+            .OnDelete(DeleteBehavior.Restrict); // Yenə Restrict
     }
 }

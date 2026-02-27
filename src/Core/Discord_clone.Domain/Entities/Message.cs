@@ -18,5 +18,7 @@ namespace Discord_clone.Domain.Entities
         // 2. HANSI kanala göndərilib? (Channel ilə 1:N əlaqə)
         public Guid ChannelId { get; set; }
         public Channel? Channel { get; set; }
+        public bool IsEdited { get; set; } = false; // Dəyişdirilibmi?
+        public DateTime? UpdatedAt { get; set; }    // Nə vaxt dəyişdirilib?
     }
 }

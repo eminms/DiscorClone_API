@@ -122,6 +122,27 @@ namespace Discord_clone.Persistence.Migrations
                     b.ToTable("Channels");
                 });
 
+            modelBuilder.Entity("Discord_clone.Domain.Entities.Friendship", b =>
+                {
+                    b.Property<string>("RequesterId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ReceiverId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("RequesterId", "ReceiverId");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.ToTable("Friendships");
+                });
+
             modelBuilder.Entity("Discord_clone.Domain.Entities.Message", b =>
                 {
                     b.Property<Guid>("Id")
@@ -137,6 +158,9 @@ namespace Discord_clone.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsEdited")
+                        .HasColumnType("bit");
 
                     b.Property<string>("SenderId")
                         .IsRequired()
@@ -353,6 +377,25 @@ namespace Discord_clone.Persistence.Migrations
                     b.Navigation("Server");
                 });
 
+            modelBuilder.Entity("Discord_clone.Domain.Entities.Friendship", b =>
+                {
+                    b.HasOne("Discord_clone.Domain.Entities.AppUser", "Receiver")
+                        .WithMany("ReceivedFriendRequests")
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Discord_clone.Domain.Entities.AppUser", "Requester")
+                        .WithMany("SentFriendRequests")
+                        .HasForeignKey("RequesterId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Requester");
+                });
+
             modelBuilder.Entity("Discord_clone.Domain.Entities.Message", b =>
                 {
                     b.HasOne("Discord_clone.Domain.Entities.Channel", "Channel")
@@ -458,6 +501,10 @@ namespace Discord_clone.Persistence.Migrations
                     b.Navigation("Messages");
 
                     b.Navigation("OwnedServers");
+
+                    b.Navigation("ReceivedFriendRequests");
+
+                    b.Navigation("SentFriendRequests");
 
                     b.Navigation("ServerMembers");
                 });

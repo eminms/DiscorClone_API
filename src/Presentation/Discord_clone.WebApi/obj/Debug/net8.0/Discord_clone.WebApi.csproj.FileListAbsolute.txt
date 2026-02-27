@@ -331,7 +331,6 @@ C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\Discord_.ED3840DD.Up2Date
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\Discord_clone.WebApi.dll
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\refint\Discord_clone.WebApi.dll

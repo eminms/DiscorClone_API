@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Discord_clone.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fec97080d8dab2c80366055811a33c6033943461")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36e21b7700ed9d5db19263966f2c555260eee21e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Discord_clone.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Discord_clone.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

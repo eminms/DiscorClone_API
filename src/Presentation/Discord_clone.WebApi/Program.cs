@@ -1,6 +1,7 @@
 ﻿
 using Discord_clone.Domain.Entities;
 using Discord_clone.Persistence.Contexts;
+using Discord_clone.WebApi.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -88,6 +89,8 @@ namespace Discord_clone.WebApi
                 };
             });
 
+            builder.Services.AddSignalR();
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -105,6 +108,8 @@ namespace Discord_clone.WebApi
 
 
             app.MapControllers();
+
+            app.MapHub<ChatHub>("/chatHub");
 
             app.Run();
         }
