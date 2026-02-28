@@ -122,6 +122,45 @@ namespace Discord_clone.Persistence.Migrations
                     b.ToTable("Channels");
                 });
 
+            modelBuilder.Entity("Discord_clone.Domain.Entities.DirectMessage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsEdited")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ReceiverId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SenderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("DirectMessages");
+                });
+
             modelBuilder.Entity("Discord_clone.Domain.Entities.Friendship", b =>
                 {
                     b.Property<string>("RequesterId")
@@ -225,6 +264,9 @@ namespace Discord_clone.Persistence.Migrations
 
                     b.Property<DateTime>("JoinedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.HasKey("AppUserId", "ServerId");
 
@@ -377,6 +419,25 @@ namespace Discord_clone.Persistence.Migrations
                     b.Navigation("Server");
                 });
 
+            modelBuilder.Entity("Discord_clone.Domain.Entities.DirectMessage", b =>
+                {
+                    b.HasOne("Discord_clone.Domain.Entities.AppUser", "Receiver")
+                        .WithMany("ReceivedDirectMessages")
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Discord_clone.Domain.Entities.AppUser", "Sender")
+                        .WithMany("SentDirectMessages")
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
+                });
+
             modelBuilder.Entity("Discord_clone.Domain.Entities.Friendship", b =>
                 {
                     b.HasOne("Discord_clone.Domain.Entities.AppUser", "Receiver")
@@ -502,7 +563,11 @@ namespace Discord_clone.Persistence.Migrations
 
                     b.Navigation("OwnedServers");
 
+                    b.Navigation("ReceivedDirectMessages");
+
                     b.Navigation("ReceivedFriendRequests");
+
+                    b.Navigation("SentDirectMessages");
 
                     b.Navigation("SentFriendRequests");
 

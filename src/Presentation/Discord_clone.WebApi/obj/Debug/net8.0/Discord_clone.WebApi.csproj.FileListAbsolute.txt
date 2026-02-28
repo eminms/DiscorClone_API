@@ -338,3 +338,4 @@ C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\Discord_clone.WebApi.genruntimeconfig.cache
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\ref\Discord_clone.WebApi.dll
 C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\Discord_clone.WebApi.sourcelink.json
+C:\Users\user\Desktop\Final-Project-Discord-Clone-API-\src\Presentation\Discord_clone.WebApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

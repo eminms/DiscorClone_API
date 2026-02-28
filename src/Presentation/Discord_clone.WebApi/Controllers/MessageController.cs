@@ -112,19 +112,32 @@ namespace Discord_clone.WebApi.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var message = await _context.Messages.FindAsync(id);
+            // 1. Mesajı, onun Kanalını və Serverin ID-sini birlikdə çəkirik
+            var message = await _context.Messages
+                .Include(m => m.Channel)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
             if (message == null) return NotFound(new { Message = "Mesaj tapılmadı!" });
 
-            // Təhlükəsizlik: Bu mesajı bu adam yazıb?
-            if (message.SenderId != userId)
-                return Unauthorized(new { Message = "Sən yalnız öz mesajlarını silə bilərsən!" });
+            // 2. Bu adamın bu serverdəki ROLUNU tapırıq
+            var memberInfo = await _context.ServerMembers
+                .FirstOrDefaultAsync(sm => sm.ServerId == message.Channel!.ServerId && sm.AppUserId == userId);
 
-            var channelId = message.ChannelId; // Silinmədən əvvəl kanalın ID-sini yadda saxlayırıq ki, SignalR-a verək
+            // 3. Şərtləri yoxlayırıq:
+            bool isMessageOwner = message.SenderId == userId; // Mesajı özü yazıb?
+            bool hasModPowers = memberInfo != null && (memberInfo.Role == Discord_clone.Domain.Enums.ServerRole.Admin || memberInfo.Role == Discord_clone.Domain.Enums.ServerRole.Moderator); // Və ya yekəbasdır?
 
+            // Əgər nə mesaj onundur, nə də Moderator/Admindir -> İcazə yoxdur!
+            if (!isMessageOwner && !hasModPowers)
+                return StatusCode(403, new { Message = "Sən yalnız öz mesajlarını silə bilərsən!" });
+
+            var channelId = message.ChannelId;
+
+            // 4. Hər şey ok-dirsə sildik
             _context.Messages.Remove(message);
             await _context.SaveChangesAsync();
 
-            // SignalR: Otaqdakı hər kəsə xəbər veririk ki, filan ID-li mesaj silindi (ekrandan itirsinlər)
+            // 5. SignalR ilə hamının ekranından uçurduruq
             await _hubContext.Clients.Group(channelId.ToString())
                 .SendAsync("MessageDeleted", id);
 

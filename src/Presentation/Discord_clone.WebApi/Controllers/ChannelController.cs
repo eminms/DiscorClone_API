@@ -1,6 +1,6 @@
 ﻿using Discord_clone.Application.DTOs;
 using Discord_clone.Domain.Entities;
-using Discord_clone.Persistence.Contexts; 
+using Discord_clone.Persistence.Contexts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,11 +26,21 @@ namespace Discord_clone.WebApi.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            // Təhlükəsizlik: Görək bu server həqiqətən bu istifadəçiyə aiddir?
-            var server = await _context.Servers.FirstOrDefaultAsync(s => s.Id == model.ServerId);
+            // Baxaq görək belə bir server ümumiyyətlə varmı?
+            var server = await _context.Servers.FindAsync(model.ServerId);
             if (server == null) return NotFound(new { Message = "Server tapılmadı!" });
-            if (server.OwnerId != userId) return Unauthorized(new { Message = "Bu serverdə kanal yaratmaq üçün icazəniz yoxdur!" });
 
+            // ROL YOXLAMASI: Bu adam bu serverdə varmı və rolu nədir?
+            var memberInfo = await _context.ServerMembers
+                .FirstOrDefaultAsync(sm => sm.ServerId == model.ServerId && sm.AppUserId == userId);
+
+            if (memberInfo == null)
+                return BadRequest(new { Message = "Sən bu serverin üzvü deyilsən!" });
+
+            if (memberInfo.Role == Discord_clone.Domain.Enums.ServerRole.Member)
+                return StatusCode(403, new { Message = "Sənin kanal yaratmaq icazən yoxdur! Yalnız Admin və ya Moderator edə bilər." });
+
+            // Hər şey qaydasındadırsa, kanalı yaradırıq
             var newChannel = new Channel
             {
                 Name = model.Name,
@@ -44,11 +54,10 @@ namespace Discord_clone.WebApi.Controllers
             return Ok(new { Message = "Kanal uğurla yaradıldı!", ChannelId = newChannel.Id });
         }
 
-        // 2. READ: Müəyyən bir serverin KANALLARINI gətir
+        // 2. READ: Müəyyən bir serverin KANALLARINI gətir (Buna hamı baxa bilər)
         [HttpGet("server/{serverId}")]
         public async Task<IActionResult> GetServerChannels(Guid serverId)
         {
-            // Sadəcə bu ServerId-yə aid olan kanalları listələyirik
             var channels = await _context.Channels
                 .Where(c => c.ServerId == serverId)
                 .ToListAsync();
@@ -62,13 +71,15 @@ namespace Discord_clone.WebApi.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            // Kanalı tapırıq və ".Include(c => c.Server)" ilə onun aid olduğu serverin məlumatlarını da gətiririk ki, sahibini yoxlayaq
-            var channel = await _context.Channels
-                .Include(c => c.Server)
-                .FirstOrDefaultAsync(c => c.Id == id);
-
+            var channel = await _context.Channels.FindAsync(id);
             if (channel == null) return NotFound(new { Message = "Kanal tapılmadı!" });
-            if (channel.Server.OwnerId != userId) return Unauthorized(new { Message = "Bu kanalı dəyişməyə icazəniz yoxdur!" });
+
+            // ROL YOXLAMASI
+            var memberInfo = await _context.ServerMembers
+                .FirstOrDefaultAsync(sm => sm.ServerId == channel.ServerId && sm.AppUserId == userId);
+
+            if (memberInfo == null || memberInfo.Role == Discord_clone.Domain.Enums.ServerRole.Member)
+                return StatusCode(403, new { Message = "Bu kanalı dəyişməyə icazəniz yoxdur! Yalnız Admin və ya Moderator edə bilər." });
 
             if (!string.IsNullOrWhiteSpace(model.Name))
                 channel.Name = model.Name;
@@ -83,12 +94,15 @@ namespace Discord_clone.WebApi.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var channel = await _context.Channels
-                .Include(c => c.Server)
-                .FirstOrDefaultAsync(c => c.Id == id);
-
+            var channel = await _context.Channels.FindAsync(id);
             if (channel == null) return NotFound(new { Message = "Kanal tapılmadı!" });
-            if (channel.Server.OwnerId != userId) return Unauthorized(new { Message = "Bu kanalı silməyə icazəniz yoxdur!" });
+
+            // ROL YOXLAMASI
+            var memberInfo = await _context.ServerMembers
+                .FirstOrDefaultAsync(sm => sm.ServerId == channel.ServerId && sm.AppUserId == userId);
+
+            if (memberInfo == null || memberInfo.Role == Discord_clone.Domain.Enums.ServerRole.Member)
+                return StatusCode(403, new { Message = "Bu kanalı silməyə icazəniz yoxdur! Yalnız Admin və ya Moderator edə bilər." });
 
             _context.Channels.Remove(channel);
             await _context.SaveChangesAsync();

@@ -1,5 +1,6 @@
 ﻿using Discord_clone.Application.DTOs;
 using Discord_clone.Domain.Entities;
+using Discord_clone.Domain.Enums;
 using Discord_clone.Persistence.Contexts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -37,19 +38,33 @@ namespace Discord_clone.WebApi.Controllers
                 ? $"https://ui-avatars.com/api/?name={model.Name}&background=random&color=fff&size=128"
                 : model.ImageUrl;
 
+            // 1. Öncə Serveri yaradırıq
             var newServer = new Server
             {
                 Name = model.Name,
                 Description = model.Description,
-                ImageUrl = finalImageUrl, 
+                ImageUrl = finalImageUrl,
                 OwnerId = userId
             };
 
             _context.Servers.Add(newServer);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(); // Burada save edirik ki, newServer.Id yaransın
 
-            return Ok(new { Message = "Server uğurla yaradıldı!", ServerId = newServer.Id, Image = finalImageUrl });
+            // 2. YENİ ƏLAVƏ: İndi isə serveri yaradan adamı "Admin" olaraq o serverə əlavə edirik (Körpü)
+            var member = new ServerMember
+            {
+                AppUserId = userId,
+                ServerId = newServer.Id, // Yuxarıda yaranan serverin ID-si
+                Role = Discord_clone.Domain.Enums.ServerRole.Admin, // <--- BAX BURADA VERİRİK!
+                JoinedAt = DateTime.UtcNow
+            };
+
+            _context.ServerMembers.Add(member);
+            await _context.SaveChangesAsync(); // Körpünü də bazaya yazırıq
+
+            return Ok(new { Message = "Server uğurla yaradıldı və siz Admin təyin olundunuz!", ServerId = newServer.Id, Image = finalImageUrl });
         }
+
         // 1. READ: Mənim serverlərimi gətir
         [HttpGet("my-servers")]
         public async Task<IActionResult> GetMyServers()
@@ -150,6 +165,40 @@ namespace Discord_clone.WebApi.Controllers
                 .ToListAsync();
 
             return Ok(joinedServers);
+        }
+
+        // SERVERDƏ KİMƏSƏ ROL VERMƏK (Yalnız Admin edə bilər)
+        [HttpPut("{serverId}/roles")]
+        public async Task<IActionResult> UpdateMemberRole(Guid serverId, [FromBody] UpdateRoleDto model)
+        {
+            var myId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // 1. MƏN BU SERVERDƏ KİMƏM? (Mənim rolumu yoxlayırıq)
+            var myMemberInfo = await _context.ServerMembers
+                .FirstOrDefaultAsync(sm => sm.ServerId == serverId && sm.AppUserId == myId);
+
+            if (myMemberInfo == null)
+                return NotFound(new { Message = "Sən bu serverdə yoxsan!" });
+
+            if (myMemberInfo.Role != ServerRole.Admin)
+                return StatusCode(403, new { Message = "Sənin başqalarına rol vermək icazən yoxdur! Yalnız Admin edə bilər." });
+
+            // 2. ÖZ ROLUMU DƏYİŞİRƏM?
+            if (myId == model.TargetUserId)
+                return BadRequest(new { Message = "Sən öz rolunu dəyişə bilməzsən (Serverin tək Admini sən olmalısan)!" });
+
+            // 3. ROL VERƏCƏYİM ADAM SERVERDƏDİRMİ?
+            var targetMember = await _context.ServerMembers
+                .FirstOrDefaultAsync(sm => sm.ServerId == serverId && sm.AppUserId == model.TargetUserId);
+
+            if (targetMember == null)
+                return NotFound(new { Message = "Rol vermək istədiyin adam bu serverin üzvü deyil!" });
+
+            // 4. ROLU YENİLƏYİRİK
+            targetMember.Role = model.NewRole;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "İstifadəçinin rolu uğurla yeniləndi!" });
         }
     }
 }

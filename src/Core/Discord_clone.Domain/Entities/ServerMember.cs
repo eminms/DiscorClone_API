@@ -1,4 +1,6 @@
-﻿namespace Discord_clone.Domain.Entities
+﻿using Discord_clone.Domain.Enums;
+
+namespace Discord_clone.Domain.Entities
 {
     public class ServerMember
     {
@@ -11,6 +13,10 @@
         public Server? Server { get; set; }
 
         // Nə vaxt qoşulub? 
+
+        // YENİ ƏLAVƏ: Adam serverə qoşulanda default olaraq "Adi Üzv" olur
+        public ServerRole Role { get; set; } = ServerRole.Member;
+
         public DateTime JoinedAt { get; set; } = DateTime.UtcNow;
     }
 }

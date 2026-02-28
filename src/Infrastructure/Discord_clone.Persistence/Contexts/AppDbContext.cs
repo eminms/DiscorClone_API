@@ -15,6 +15,9 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<Message> Messages { get; set; }
     public DbSet<ServerMember> ServerMembers { get; set; }
     public DbSet<Friendship> Friendships { get; set; }
+    public DbSet<DirectMessage> DirectMessages { get; set; }
+
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -37,7 +40,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
             .OnDelete(DeleteBehavior.Cascade);
 
 
-        // --- YENİ: MESAJ ƏLAQƏLƏRİNİN QURULMASI ---
+        // ---  MESAJ ƏLAQƏLƏRİNİN QURULMASI ---
 
         builder.Entity<Message>()
             .HasOne(m => m.Sender)
@@ -68,13 +71,29 @@ public class AppDbContext : IdentityDbContext<AppUser>
             .HasOne(f => f.Requester)
             .WithMany(u => u.SentFriendRequests)
             .HasForeignKey(f => f.RequesterId)
-            .OnDelete(DeleteBehavior.Restrict); // DİQQƏT: Restrict yazırıq ki, SQL silinmə xətası verməsin
+            .OnDelete(DeleteBehavior.Restrict); // Restrict yazırıq ki, SQL silinmə xətası verməsin
 
         // İstəyi alan tərəf
         builder.Entity<Friendship>()
             .HasOne(f => f.Receiver)
             .WithMany(u => u.ReceivedFriendRequests)
             .HasForeignKey(f => f.ReceiverId)
+            .OnDelete(DeleteBehavior.Restrict); // Yenə Restrict
+
+        // --- ŞƏXSİ MESAJ (DM) ƏLAQƏLƏRİ ---
+
+        // Göndərən tərəf
+        builder.Entity<DirectMessage>()
+            .HasOne(dm => dm.Sender)
+            .WithMany(u => u.SentDirectMessages)
+            .HasForeignKey(dm => dm.SenderId)
+            .OnDelete(DeleteBehavior.Restrict); // Silinmə xətası olmasın deyə Restrict
+
+        // Alan tərəf
+        builder.Entity<DirectMessage>()
+            .HasOne(dm => dm.Receiver)
+            .WithMany(u => u.ReceivedDirectMessages)
+            .HasForeignKey(dm => dm.ReceiverId)
             .OnDelete(DeleteBehavior.Restrict); // Yenə Restrict
     }
 }

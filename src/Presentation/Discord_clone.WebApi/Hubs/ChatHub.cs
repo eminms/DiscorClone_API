@@ -22,5 +22,19 @@ namespace Discord_clone.WebApi.Hubs
             // "ReceiveMessage" -> Bu adı front-end-də JavaScript dinləyəcək
             await Clients.Group(channelId).SendAsync("ReceiveMessage", username, avatarUrl, message);
         }
+
+        // İki istifadəçi üçün unikal DM otağı adı yaradan kiçik funksiya
+        private string GetDirectChatRoomName(string user1, string user2)
+        {
+            // ID-ləri əlifba sırası ilə düzürük ki, həmişə eyni otaq adı alınsın
+            return string.Compare(user1, user2) < 0 ? $"{user1}_{user2}" : $"{user2}_{user1}";
+        }
+
+        // DM otağına qoşulmaq
+        public async Task JoinDirectChat(string myId, string otherUserId)
+        {
+            var roomName = GetDirectChatRoomName(myId, otherUserId);
+            await Groups.AddToGroupAsync(Context.ConnectionId, roomName);
+        }
     }
 }

@@ -21,5 +21,9 @@ namespace Discord_clone.Domain.Entities
 
         // Mənə gələn dostluq istəkləri
         public ICollection<Friendship> ReceivedFriendRequests { get; set; } = new List<Friendship>();
+
+        // Şəxsi Mesajlar (DM)
+        public ICollection<DirectMessage> SentDirectMessages { get; set; } = new List<DirectMessage>();
+        public ICollection<DirectMessage> ReceivedDirectMessages { get; set; } = new List<DirectMessage>();
     }
 }
