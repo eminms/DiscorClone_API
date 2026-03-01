@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|c:\\users\\user\\desktop\\final-project-discord-clone-api-\\src\\presentation\\discord_clone.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|solutionrelative:src\\presentation\\discord_clone.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|c:\\users\\user\\desktop\\final-project-discord-clone-api-\\src\\presentation\\discord_clone.webapi\\hubs\\presencetracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|solutionrelative:src\\presentation\\discord_clone.webapi\\hubs\\presencetracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|c:\\users\\user\\desktop\\final-project-discord-clone-api-\\src\\presentation\\discord_clone.webapi\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|solutionrelative:src\\presentation\\discord_clone.webapi\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|c:\\users\\user\\desktop\\final-project-discord-clone-api-\\src\\presentation\\discord_clone.webapi\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|solutionrelative:src\\presentation\\discord_clone.webapi\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{2E3DBC6F-F7C6-4171-ABAC-92CB527C14AD}|src\\Core\\Discord_clone.Application\\Discord_clone.Application.csproj|solutionrelative:src\\core\\discord_clone.application\\dtos\\senddirectmessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|c:\\users\\user\\desktop\\final-project-discord-clone-api-\\src\\presentation\\discord_clone.webapi\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|solutionrelative:src\\presentation\\discord_clone.webapi\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FD8E5FCF-A2EA-4592-939A-672347806C29}|src\\Infrastructure\\Discord_clone.Persistence\\Discord_clone.Persistence.csproj|c:\\users\\user\\desktop\\final-project-discord-clone-api-\\src\\infrastructure\\discord_clone.persistence\\contexts\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FD8E5FCF-A2EA-4592-939A-672347806C29}|src\\Infrastructure\\Discord_clone.Persistence\\Discord_clone.Persistence.csproj|solutionrelative:src\\infrastructure\\discord_clone.persistence\\contexts\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -73,10 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2E3DBC6F-F7C6-4171-ABAC-92CB527C14AD}|src\\Core\\Discord_clone.Application\\Discord_clone.Application.csproj|c:\\users\\user\\desktop\\final-project-discord-clone-api-\\src\\core\\discord_clone.application\\dtos\\sendmessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E3DBC6F-F7C6-4171-ABAC-92CB527C14AD}|src\\Core\\Discord_clone.Application\\Discord_clone.Application.csproj|solutionrelative:src\\core\\discord_clone.application\\dtos\\sendmessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|c:\\users\\user\\desktop\\final-project-discord-clone-api-\\src\\presentation\\discord_clone.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{609C0E33-9751-4D33-A67F-C6761776E7C1}|src\\Presentation\\Discord_clone.WebApi\\Discord_clone.WebApi.csproj|solutionrelative:src\\presentation\\discord_clone.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A598503B-73AD-4AE8-AFF5-0F2365EAA912}|src\\Core\\Discord_clone.Domain\\Discord_clone.Domain.csproj|c:\\users\\user\\desktop\\final-project-discord-clone-api-\\src\\core\\discord_clone.domain\\entities\\channel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -142,7 +146,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -150,20 +154,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateRoleDto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\UpdateRoleDto.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\UpdateRoleDto.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\UpdateRoleDto.cs",
-              "RelativeToolTip": "src\\Core\\Discord_clone.Application\\DTOs\\UpdateRoleDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABvAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "PresenceTracker.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Hubs\\PresenceTracker.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Hubs\\PresenceTracker.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Hubs\\PresenceTracker.cs",
+              "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Hubs\\PresenceTracker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T13:56:18.731Z",
+              "WhenOpened": "2026-03-01T14:12:45.267Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "ServerRole.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Enums\\ServerRole.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Enums\\ServerRole.cs",
@@ -171,12 +175,11 @@
               "RelativeToolTip": "src\\Core\\Discord_clone.Domain\\Enums\\ServerRole.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T13:46:54.86Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T13:46:54.86Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "FriendshipController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Controllers\\FriendshipController.cs",
               "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\FriendshipController.cs",
@@ -184,12 +187,11 @@
               "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\FriendshipController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-27T17:45:12.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-27T17:45:12.728Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "ServerMember.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Entities\\ServerMember.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Entities\\ServerMember.cs",
@@ -197,12 +199,11 @@
               "RelativeToolTip": "src\\Core\\Discord_clone.Domain\\Entities\\ServerMember.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T15:50:57.066Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-24T15:50:57.066Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ServerController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Controllers\\ServerController.cs",
               "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\ServerController.cs",
@@ -210,12 +211,11 @@
               "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\ServerController.cs",
               "ViewState": "AgIAAJoAAAAAAAAAAAA5wMkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-22T11:13:38.883Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-22T11:13:38.883Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ChannelController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Controllers\\ChannelController.cs",
               "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\ChannelController.cs",
@@ -223,25 +223,61 @@
               "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\ChannelController.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAkwHAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-22T12:09:18.79Z",
+              "WhenOpened": "2026-02-22T12:09:18.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Hubs\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAowFoAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T13:37:29.443Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Program.cs",
+              "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Program.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAkwIAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T16:32:36.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UpdateRoleDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\UpdateRoleDto.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\UpdateRoleDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\UpdateRoleDto.cs",
+              "RelativeToolTip": "src\\Core\\Discord_clone.Application\\DTOs\\UpdateRoleDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-28T13:56:18.731Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MessageController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Controllers\\MessageController.cs",
               "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\MessageController.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Controllers\\MessageController.cs",
               "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\MessageController.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAkwIYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAgwIYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-27T15:24:52.148Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-27T15:24:52.148Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "DirectMessageController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Controllers\\DirectMessageController.cs",
               "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\DirectMessageController.cs",
@@ -249,12 +285,11 @@
               "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\DirectMessageController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAQwFYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T13:41:24.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T13:41:24.926Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "SendDirectMessageDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\SendDirectMessageDto.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\SendDirectMessageDto.cs",
@@ -262,12 +297,11 @@
               "RelativeToolTip": "src\\Core\\Discord_clone.Application\\DTOs\\SendDirectMessageDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T13:40:43.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T13:40:43.22Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "DirectMessage.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Entities\\DirectMessage.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Entities\\DirectMessage.cs",
@@ -275,12 +309,11 @@
               "RelativeToolTip": "src\\Core\\Discord_clone.Domain\\Entities\\DirectMessage.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T13:35:44.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T13:35:44.356Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "UpdateMessageDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\UpdateMessageDto.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\UpdateMessageDto.cs",
@@ -292,7 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "SendMessageDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\SendMessageDto.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\SendMessageDto.cs",
@@ -304,20 +337,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Hubs\\ChatHub.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Hubs\\ChatHub.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Hubs\\ChatHub.cs",
-              "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Hubs\\ChatHub.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAYwCUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-27T13:37:29.443Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "AppUser.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Entities\\AppUser.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Entities\\AppUser.cs",
@@ -325,12 +345,11 @@
               "RelativeToolTip": "src\\Core\\Discord_clone.Domain\\Entities\\AppUser.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T16:10:15.746Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-21T16:10:15.746Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Infrastructure\\Discord_clone.Persistence\\Contexts\\AppDbContext.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Discord_clone.Persistence\\Contexts\\AppDbContext.cs",
@@ -338,12 +357,11 @@
               "RelativeToolTip": "src\\Infrastructure\\Discord_clone.Persistence\\Contexts\\AppDbContext.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAuwGAAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T16:19:02.421Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-21T16:19:02.421Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Friendship.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Entities\\Friendship.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Entities\\Friendship.cs",
@@ -355,7 +373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "FriendshipStatus.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Enums\\FriendshipStatus.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Enums\\FriendshipStatus.cs",
@@ -367,7 +385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Server.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Entities\\Server.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Entities\\Server.cs",
@@ -379,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "ChannelType.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Enums\\ChannelType.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Enums\\ChannelType.cs",
@@ -391,7 +409,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "Message.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Entities\\Message.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Entities\\Message.cs",
@@ -403,7 +421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Channel.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Entities\\Channel.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Entities\\Channel.cs",
@@ -415,7 +433,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "UpdateServerDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\UpdateServerDto.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\UpdateServerDto.cs",
@@ -427,19 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Program.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Program.cs",
-              "RelativeToolTip": "src\\Presentation\\Discord_clone.WebApi\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG8AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T16:32:36.674Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\Controllers\\AuthController.cs",
@@ -451,7 +457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\RegisterDto.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\RegisterDto.cs",
@@ -463,7 +469,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "UpdateChannelDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\UpdateChannelDto.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\UpdateChannelDto.cs",
@@ -475,7 +481,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "CreateChannelDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\CreateChannelDto.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\CreateChannelDto.cs",
@@ -487,7 +493,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "CreateServerDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\CreateServerDto.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\CreateServerDto.cs",
@@ -499,7 +505,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Entities\\BaseEntity.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Entities\\BaseEntity.cs",
@@ -511,7 +517,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Domain\\Common\\BaseEntity.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Domain\\Common\\BaseEntity.cs",
@@ -523,7 +529,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "20260221163729_InitialIdentity.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Infrastructure\\Discord_clone.Persistence\\Migrations\\20260221163729_InitialIdentity.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Discord_clone.Persistence\\Migrations\\20260221163729_InitialIdentity.cs",
@@ -535,7 +541,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Core\\Discord_clone.Application\\DTOs\\LoginDto.cs",
               "RelativeDocumentMoniker": "src\\Core\\Discord_clone.Application\\DTOs\\LoginDto.cs",
@@ -547,7 +553,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Final-Project-Discord-Clone-API-\\src\\Presentation\\Discord_clone.WebApi\\appsettings.json",
               "RelativeDocumentMoniker": "src\\Presentation\\Discord_clone.WebApi\\appsettings.json",

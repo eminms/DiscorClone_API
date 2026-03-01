@@ -89,7 +89,16 @@ namespace Discord_clone.WebApi
                 };
             });
 
+            builder.Services.AddSingleton<PresenceTracker>();
+
             builder.Services.AddSignalR();
+
+            builder.Services.AddCors(opt => {
+                opt.AddPolicy("CorsPolicy", policy => {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://127.0.0.1:5500") // Sənin Live Server portun
+                          .AllowCredentials();
+                });
+            });
 
             var app = builder.Build();
 
@@ -102,6 +111,7 @@ namespace Discord_clone.WebApi
 
             app.UseHttpsRedirection();
 
+            app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -110,6 +120,7 @@ namespace Discord_clone.WebApi
             app.MapControllers();
 
             app.MapHub<ChatHub>("/chatHub");
+
 
             app.Run();
         }

@@ -101,6 +101,86 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Discord_clone.WebApi.Controllers.DirectMessageController",
+    "Method": "GetDirectMessages",
+    "RelativePath": "api/DirectMessage/{otherUserId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "otherUserId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.DirectMessageController",
+    "Method": "SendDirectMessage",
+    "RelativePath": "api/DirectMessage/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Discord_clone.Application.DTOs.SendDirectMessageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.FriendshipController",
+    "Method": "AcceptFriendRequest",
+    "RelativePath": "api/Friendship/accept/{requesterId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requesterId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.FriendshipController",
+    "Method": "SendFriendRequest",
+    "RelativePath": "api/Friendship/request/{receiverId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "receiverId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.FriendshipController",
+    "Method": "RemoveFriendOrDecline",
+    "RelativePath": "api/Friendship/remove/{otherUserId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "otherUserId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Discord_clone.WebApi.Controllers.MessageController",
     "Method": "GetChannelMessages",
     "RelativePath": "api/Message/{channelId}",
@@ -164,6 +244,27 @@
       {
         "Name": "model",
         "Type": "Discord_clone.Application.DTOs.SendMessageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
+    "Method": "UpdateMemberRole",
+    "RelativePath": "api/Server/{serverId}/roles",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serverId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "Discord_clone.Application.DTOs.UpdateRoleDto",
         "IsRequired": true
       }
     ],
