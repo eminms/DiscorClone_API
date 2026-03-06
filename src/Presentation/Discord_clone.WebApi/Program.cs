@@ -60,6 +60,7 @@ namespace Discord_clone.WebApi
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
+                options.User.RequireUniqueEmail = true;
             })
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
@@ -95,10 +96,14 @@ namespace Discord_clone.WebApi
 
             builder.Services.AddCors(opt => {
                 opt.AddPolicy("CorsPolicy", policy => {
-                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://127.0.0.1:5500") // Sənin Live Server portun
+                    policy.AllowAnyHeader()
+                          .AllowAnyMethod()
+                         .SetIsOriginAllowed(origin => true)
                           .AllowCredentials();
                 });
             });
+
+          
 
             var app = builder.Build();
 
@@ -110,6 +115,7 @@ namespace Discord_clone.WebApi
 
 
             app.UseHttpsRedirection();
+            app.UseRouting();
 
             app.UseCors("CorsPolicy");
 

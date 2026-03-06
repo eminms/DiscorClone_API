@@ -48,7 +48,7 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginDto model)
     {
         // 1. İstifadəçini bazada axtarırıq
-        var user = await _userManager.FindByNameAsync(model.Username);
+        var user = await _userManager.FindByEmailAsync(model.Email);
 
         // 2. Əgər istifadəçi tapılmasa və ya şifrə səhvdirsə
         if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
