@@ -150,14 +150,34 @@
   },
   {
     "ContainingType": "Discord_clone.WebApi.Controllers.FriendshipController",
-    "Method": "SendFriendRequest",
-    "RelativePath": "api/Friendship/request/{receiverId}",
+    "Method": "GetMyFriends",
+    "RelativePath": "api/Friendship/friends",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.FriendshipController",
+    "Method": "GetPendingRequests",
+    "RelativePath": "api/Friendship/pending",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Discord_clone.WebApi.Controllers.FriendshipController",
+    "Method": "SendRequestByUsername",
+    "RelativePath": "api/Friendship/request-by-username/{username}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "receiverId",
+        "Name": "username",
         "Type": "System.String",
         "IsRequired": true
       }

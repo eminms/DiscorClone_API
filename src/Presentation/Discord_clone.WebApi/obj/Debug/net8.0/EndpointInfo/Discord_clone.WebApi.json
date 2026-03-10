@@ -239,14 +239,14 @@
         }
       }
     },
-    "/api/Friendship/request/{receiverId}": {
+    "/api/Friendship/request-by-username/{username}": {
       "post": {
         "tags": [
           "Friendship"
         ],
         "parameters": [
           {
-            "name": "receiverId",
+            "name": "username",
             "in": "path",
             "required": true,
             "schema": {
@@ -297,6 +297,30 @@
               "type": "string"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendship/friends": {
+      "get": {
+        "tags": [
+          "Friendship"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendship/pending": {
+      "get": {
+        "tags": [
+          "Friendship"
         ],
         "responses": {
           "200": {

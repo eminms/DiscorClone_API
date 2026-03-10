@@ -3,7 +3,6 @@ using Discord_clone.Domain.Entities;
 using Discord_clone.Domain.Enums;
 using Discord_clone.Persistence.Contexts;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -17,62 +16,68 @@ namespace Discord_clone.WebApi.Controllers
     {
         private readonly AppDbContext _context;
 
-        // Bazamızı (AppDbContext) Controller-ə çağırırıq
         public ServerController(AppDbContext context)
         {
             _context = context;
         }
 
+        // 1. CREATE: Server Yarat və Avtomatik Dəvət Kodu ver
         [HttpPost("create")]
         public async Task<IActionResult> CreateServer([FromBody] CreateServerDto model)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (userId == null)
-            {
                 return Unauthorized(new { Message = "İstifadəçi tapılmadı!" });
-            }
 
-            // Əgər istifadəçi şəkil linki GÖNDƏRMƏYİBSƏ, UI Avatars-dan serverin adına uyğun şəkil yaradırıq.
             string finalImageUrl = string.IsNullOrWhiteSpace(model.ImageUrl)
                 ? $"https://ui-avatars.com/api/?name={model.Name}&background=random&color=fff&size=128"
                 : model.ImageUrl;
 
-            // 1. Öncə Serveri yaradırıq
+            // YENİ ƏLAVƏ: 6 simvolluq unikal dəvət kodu yaradırıq (Məsələn: "A8F2B9")
+            string generatedInviteCode = Guid.NewGuid().ToString().Substring(0, 6).ToUpper();
+
+            // Öncə Serveri yaradırıq
             var newServer = new Server
             {
                 Name = model.Name,
                 Description = model.Description,
                 ImageUrl = finalImageUrl,
-                OwnerId = userId
+                OwnerId = userId,
+                InviteCode = generatedInviteCode // Kodu bazaya yazırıq
             };
 
             _context.Servers.Add(newServer);
-            await _context.SaveChangesAsync(); // Burada save edirik ki, newServer.Id yaransın
+            await _context.SaveChangesAsync(); // newServer.Id yaransın deyə yadda saxlayırıq
 
-            // 2. YENİ ƏLAVƏ: İndi isə serveri yaradan adamı "Admin" olaraq o serverə əlavə edirik (Körpü)
+            // Serveri yaradan adamı "Admin" olaraq əlavə edirik
             var member = new ServerMember
             {
                 AppUserId = userId,
-                ServerId = newServer.Id, // Yuxarıda yaranan serverin ID-si
-                Role = Discord_clone.Domain.Enums.ServerRole.Admin, // <--- BAX BURADA VERİRİK!
+                ServerId = newServer.Id,
+                Role = ServerRole.Admin,
                 JoinedAt = DateTime.UtcNow
             };
 
             _context.ServerMembers.Add(member);
-            await _context.SaveChangesAsync(); // Körpünü də bazaya yazırıq
+            await _context.SaveChangesAsync();
 
-            return Ok(new { Message = "Server uğurla yaradıldı və siz Admin təyin olundunuz!", ServerId = newServer.Id, Image = finalImageUrl });
+            return Ok(new
+            {
+                Message = "Server uğurla yaradıldı və siz Admin təyin olundunuz!",
+                ServerId = newServer.Id,
+                Image = finalImageUrl,
+                InviteCode = generatedInviteCode // Ekranda göstərmək üçün kodu da qaytarırıq
+            });
         }
 
-        // 1. READ: Mənim serverlərimi gətir
+        // 2. READ: Mənim yaratdığım serverləri gətir
         [HttpGet("my-servers")]
         public async Task<IActionResult> GetMyServers()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null) return Unauthorized();
 
-            // Yalnız bu istifadəçinin yaratdığı serverləri tapırıq
             var servers = await _context.Servers
                 .Where(s => s.OwnerId == userId)
                 .ToListAsync();
@@ -80,21 +85,18 @@ namespace Discord_clone.WebApi.Controllers
             return Ok(servers);
         }
 
-        // 2. UPDATE: Serverin adını və ya şəklini dəyiş
+        // 3. UPDATE: Serverin adını və ya şəklini dəyiş
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateServer(Guid id, [FromBody] UpdateServerDto model)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            // Öncə serveri tapırıq (və yoxlayırıq ki, bu adam o serverin sahibidirmi?)
             var server = await _context.Servers.FirstOrDefaultAsync(s => s.Id == id && s.OwnerId == userId);
             if (server == null) return NotFound(new { Message = "Server tapılmadı və ya buna icazəniz yoxdur!" });
 
-            // Əgər yeni ad göndəribsə, onu dəyiş
             if (!string.IsNullOrWhiteSpace(model.Name))
                 server.Name = model.Name;
 
-            // Əgər yeni şəkil göndəribsə, onu dəyiş
             if (!string.IsNullOrWhiteSpace(model.ImageUrl))
                 server.ImageUrl = model.ImageUrl;
 
@@ -102,13 +104,12 @@ namespace Discord_clone.WebApi.Controllers
             return Ok(new { Message = "Server uğurla yeniləndi!", Server = server });
         }
 
-        // 3. DELETE: Serveri sil
+        // 4. DELETE: Serveri sil
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteServer(Guid id)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            // Yenə də ancaq öz serverini silə bilər
             var server = await _context.Servers.FirstOrDefaultAsync(s => s.Id == id && s.OwnerId == userId);
             if (server == null) return NotFound(new { Message = "Server tapılmadı və ya silməyə icazəniz yoxdur!" });
 
@@ -118,62 +119,58 @@ namespace Discord_clone.WebApi.Controllers
             return Ok(new { Message = "Server uğurla silindi!" });
         }
 
-        // 4. JOIN: Başqasının (və ya hər hansı) serverinə qoşulmaq
-        [HttpPost("join/{serverId}")]
-        public async Task<IActionResult> JoinServer(Guid serverId)
+        // 5. JOIN: Dəvət Kodu ilə başqasının serverinə qoşulmaq
+        [HttpPost("join/{inviteCode}")]
+        public async Task<IActionResult> JoinServer(string inviteCode)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null) return Unauthorized();
 
-            // Öncə baxaq belə bir server ümumiyyətlə varmı?
-            var server = await _context.Servers.FindAsync(serverId);
-            if (server == null) return NotFound(new { Message = "Belə bir server tapılmadı!" });
+            var server = await _context.Servers.FirstOrDefaultAsync(s => s.InviteCode == inviteCode);
+            if (server == null) return NotFound(new { Message = "Yanlış və ya vaxtı keçmiş dəvət kodu!" });
 
-            // Bəs bu adam onsuz da bu serverin üzvüdürmü? (Təkrar qoşulmasın)
             var existingMember = await _context.ServerMembers
-                .FirstOrDefaultAsync(sm => sm.ServerId == serverId && sm.AppUserId == userId);
+                .FirstOrDefaultAsync(sm => sm.ServerId == server.Id && sm.AppUserId == userId);
 
             if (existingMember != null)
                 return BadRequest(new { Message = "Sən onsuz da bu serverin üzvüsən!" });
 
-            // Hər şey qaydasındadırsa, KÖRPÜNÜ qururuq!
             var newMember = new ServerMember
             {
                 AppUserId = userId,
-                ServerId = serverId,
+                ServerId = server.Id,
+                Role = ServerRole.Member, // Qoşulan adam Adi Üzv olur
                 JoinedAt = DateTime.UtcNow
             };
 
             _context.ServerMembers.Add(newMember);
             await _context.SaveChangesAsync();
 
-            return Ok(new { Message = $"Təbriklər! '{server.Name}' serverinə qoşuldun." });
+            return Ok(new { Message = $"Təbriklər! '{server.Name}' serverinə uğurla qoşuldun. 🎉" });
         }
 
-        // 5. READ: Mənim ÜZV OLDUĞUM (qoşulduğum) bütün serverləri gətir
+        // 6. READ: Mənim ÜZV OLDUĞUM (qoşulduğum) bütün serverləri gətir
         [HttpGet("joined-servers")]
         public async Task<IActionResult> GetJoinedServers()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null) return Unauthorized();
 
-            // Körpü (ServerMembers) cədvəlinə girib, bu istifadəçinin qoşulduğu serverləri çəkirik
             var joinedServers = await _context.ServerMembers
                 .Where(sm => sm.AppUserId == userId)
-                .Include(sm => sm.Server) // Cədvəldən sadəcə ID yox, Serverin öz məlumatlarını (Ad, Şəkil) da çəkirik
-                .Select(sm => sm.Server)  // Sonda sadəcə Server obyektlərini ekrana veririk
+                .Include(sm => sm.Server)
+                .Select(sm => sm.Server)
                 .ToListAsync();
 
             return Ok(joinedServers);
         }
 
-        // SERVERDƏ KİMƏSƏ ROL VERMƏK (Yalnız Admin edə bilər)
+        // 7. ROLES: Serverdə kiməsə rol vermək (Yalnız Admin edə bilər)
         [HttpPut("{serverId}/roles")]
         public async Task<IActionResult> UpdateMemberRole(Guid serverId, [FromBody] UpdateRoleDto model)
         {
             var myId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            // 1. MƏN BU SERVERDƏ KİMƏM? (Mənim rolumu yoxlayırıq)
             var myMemberInfo = await _context.ServerMembers
                 .FirstOrDefaultAsync(sm => sm.ServerId == serverId && sm.AppUserId == myId);
 
@@ -183,18 +180,15 @@ namespace Discord_clone.WebApi.Controllers
             if (myMemberInfo.Role != ServerRole.Admin)
                 return StatusCode(403, new { Message = "Sənin başqalarına rol vermək icazən yoxdur! Yalnız Admin edə bilər." });
 
-            // 2. ÖZ ROLUMU DƏYİŞİRƏM?
             if (myId == model.TargetUserId)
                 return BadRequest(new { Message = "Sən öz rolunu dəyişə bilməzsən (Serverin tək Admini sən olmalısan)!" });
 
-            // 3. ROL VERƏCƏYİM ADAM SERVERDƏDİRMİ?
             var targetMember = await _context.ServerMembers
                 .FirstOrDefaultAsync(sm => sm.ServerId == serverId && sm.AppUserId == model.TargetUserId);
 
             if (targetMember == null)
                 return NotFound(new { Message = "Rol vermək istədiyin adam bu serverin üzvü deyil!" });
 
-            // 4. ROLU YENİLƏYİRİK
             targetMember.Role = model.NewRole;
             await _context.SaveChangesAsync();
 

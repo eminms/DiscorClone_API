@@ -113,7 +113,7 @@ namespace Discord_clone.WebApi
                 app.UseSwaggerUI();
             }
 
-
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseRouting();
 

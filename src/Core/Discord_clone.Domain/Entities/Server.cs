@@ -13,6 +13,7 @@ namespace Discord_clone.Domain.Entities
         public string ImageUrl { get; set; }
         public string OwnerId { get; set; } = string.Empty; // Bu serveri kim yaradıb? (AppUser Id)
         public AppUser? Owner { get; set; }
+        public string InviteCode { get; set; } = string.Empty;
         public ICollection<Channel> Channels { get; set; } = new List<Channel>();
         public ICollection<ServerMember> Members { get; set; } = new List<ServerMember>();
     }
