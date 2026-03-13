@@ -556,19 +556,18 @@
         }
       }
     },
-    "/api/Server/join/{serverId}": {
+    "/api/Server/join/{inviteCode}": {
       "post": {
         "tags": [
           "Server"
         ],
         "parameters": [
           {
-            "name": "serverId",
+            "name": "inviteCode",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             }
           }
         ],

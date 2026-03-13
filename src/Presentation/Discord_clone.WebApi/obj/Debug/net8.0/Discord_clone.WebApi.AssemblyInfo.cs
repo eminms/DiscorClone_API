@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Discord_clone.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+500524ade973228d623f4064d00fd2975520a45f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85d1caa814237752c3af84359478a3eb907d2d03")]
 [assembly: System.Reflection.AssemblyProductAttribute("Discord_clone.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Discord_clone.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -146,7 +146,13 @@ namespace Discord_clone.WebApi.Controllers
             _context.ServerMembers.Add(newMember);
             await _context.SaveChangesAsync();
 
-            return Ok(new { Message = $"Təbriklər! '{server.Name}' serverinə uğurla qoşuldun. 🎉" });
+            return Ok(new
+            {
+                Message = $"Təbriklər! '{server.Name}' serverinə uğurla qoşuldun. 🎉",
+                ServerId = server.Id,
+                Name = server.Name,
+                ImageUrl = server.ImageUrl
+            });
         }
 
         // 6. READ: Mənim ÜZV OLDUĞUM (qoşulduğum) bütün serverləri gətir

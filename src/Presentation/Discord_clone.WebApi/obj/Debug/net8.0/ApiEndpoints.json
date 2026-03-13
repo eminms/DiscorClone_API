@@ -325,14 +325,14 @@
   {
     "ContainingType": "Discord_clone.WebApi.Controllers.ServerController",
     "Method": "JoinServer",
-    "RelativePath": "api/Server/join/{serverId}",
+    "RelativePath": "api/Server/join/{inviteCode}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "serverId",
-        "Type": "System.Guid",
+        "Name": "inviteCode",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
